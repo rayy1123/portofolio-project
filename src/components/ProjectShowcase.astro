@@ -1,0 +1,70 @@
+---
+export interface Project {
+  id: number;
+  title: string;
+  tech: string[];
+  description: string;
+  repoSlug: string;
+  banner: string;
+  featured: boolean;
+  liveUrl?: string;
+}
+
+interface Props {
+  projects: Project[];
+}
+---
+
+<div class="grid md:grid-cols-2 gap-6">
+  {Astro.props.projects.map((project, i) => (
+    <a
+      href={project.liveUrl || `https://github.com/rayy1123/${project.repoSlug}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group block bg-[#111118] rounded-xl border border-white/[0.06] overflow-hidden hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/5 transition-all duration-300 hover:-translate-y-1 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-purple-500/50 anim-slide-up"
+      style={`animation-delay: ${i * 120}ms`}
+    >
+      <!-- Banner -->
+      <div class="relative h-44 md:h-48 overflow-hidden bg-[#181820]">
+        <img
+          src={project.banner}
+          alt={project.title}
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          loading="lazy"
+        />
+        {project.featured && (
+          <span class="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white bg-purple-600/80 rounded-full backdrop-blur-sm">
+            Featured
+          </span>
+        )}
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#111118] via-transparent to-transparent opacity-60"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-5">
+        <h3 class="text-base font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+          {project.title}
+        </h3>
+        <p class="text-sm text-white/50 mb-4 line-clamp-2 leading-relaxed">
+          {project.description}
+        </p>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          {project.tech.map((t) => (
+            <span
+              class="px-2 py-0.5 text-[10px] font-medium bg-white/[0.05] text-white/50 rounded-full border border-white/[0.06] hover:border-purple-500/30 hover:text-purple-300 hover:bg-purple-500/10 transition-colors"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+        <div class="flex items-center gap-1.5 text-xs font-medium text-purple-400 group-hover:text-purple-300 transition-colors">
+          <span>Lihat di GitHub</span>
+          <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4-4m4 4H3" />
+          </svg>
+        </div>
+      </div>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,131 @@
+---
+// src/components/MasteryStack.astro
+// Logo tech stack dari public/logos/ — masing-masing punya placeholder sendiri
+---
+<section class="mastery-stack">
+  <div class="mastery-title">
+    <span class="text-xs font-semibold uppercase tracking-widest text-red-600 mb-1 block">
+      Tech Mastery
+    </span>
+    <h3 class="text-lg font-semibold text-gray-900">Stack yang Saya Kuasai</h3>
+  </div>
+  <div class="mastery-grid">
+    <!-- Laravel -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/laravel.png" alt="Laravel" class="logo-img" />
+      </div>
+      <span class="tech-name">Laravel</span>
+    </div>
+
+    <!-- PHP -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/php.png" alt="PHP" class="logo-img" />
+      </div>
+      <span class="tech-name">PHP</span>
+    </div>
+
+    <!-- Next.js -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/nextjs.png" alt="Next.js" class="logo-img" />
+      </div>
+      <span class="tech-name">Next.js</span>
+    </div>
+
+    <!-- React -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/React.png" alt="React" class="logo-img" />
+      </div>
+      <span class="tech-name">React</span>
+    </div>
+
+    <!-- PostgreSQL -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/postgresql.png" alt="PostgreSQL" class="logo-img" />
+      </div>
+      <span class="tech-name">PostgreSQL</span>
+    </div>
+
+    <!-- MySQL -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/mysql.png" alt="MySQL" class="logo-img" />
+      </div>
+      <span class="tech-name">MySQL</span>
+    </div>
+
+    <!-- Node.js -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/nodejs.png" alt="Node.js" class="logo-img" />
+      </div>
+      <span class="tech-name">Node.js</span>
+    </div>
+
+    <!-- Vite -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <img src="/logos/vite.png" alt="Vite" class="logo-img" />
+      </div>
+      <span class="tech-name">Vite</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .mastery-stack {
+    margin-top: 2.5rem;
+  }
+  .mastery-title {
+    margin-bottom: 1rem;
+  }
+  .mastery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid #dc2626;
+    border-radius: 0.75rem;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: default;
+  }
+  .tech-card:hover {
+    border-color: #ef4444;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+    transform: translateY(-2px);
+  }
+  .tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+  }
+  .logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+  }
+  .tech-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="195" fill="url(#ringGradient)" />
+
+  <!-- Photo area background -->
+  <circle cx="200" cy="200" r="175" fill="#f1f5f9" />
+
+  <!-- Decorative subtle circles inside -->
+  <circle cx="200" cy="200" r="155" fill="none" stroke="#e2e8f0" stroke-width="1" />
+  <circle cx="200" cy="200" r="135" fill="none" stroke="#f1f5f9" stroke-width="1" />
+
+  <!-- Clear head silhouette -->
+  <circle cx="200" cy="170" r="42" fill="#cbd5e1" />
+
+  <!-- Clear shoulders/bust silhouette -->
+  <path d="M120 320 Q120 250 160 232 Q180 222 200 222 Q220 222 240 232 Q280 250 280 320 Z"
+        fill="#cbd5e1" />
+
+  <!-- Clear instruction text -->
+  <text x="200" y="360" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="1">
+    PROFILE PHOTO
+  </text>
+
+  <text x="200" y="376" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="9" fill="#94a3b8">
+    Ganti dengan foto profil asli (PNG/JPG)
+  </text>
+</svg>

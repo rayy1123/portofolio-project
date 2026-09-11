@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Web Developer | SMKN 64 Jakarta | RPL' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-grid min-h-screen text-gray-100 antialiased">
+    <!-- Nav pills (floating, dark) -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+      <div class="glass-strong rounded-full px-4 py-2 flex items-center gap-1 shadow-xl shadow-black/20">
+        <a href="/" class="nav-pill px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5">Beranda</a>
+        <a href="#about" class="nav-pill px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5">Tentang</a>
+        <a href="#skills" class="nav-pill px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5">Kemampuan</a>
+        <a href="#projects" class="nav-pill px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5">Proyek</a>
+        <a href="#contact" class="nav-pill px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5">Kontak</a>
+        <a
+          href="https://github.com/rayy1123"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-pill ml-2 p-1.5 rounded-full hover:bg-white/5 transition-colors"
+        >
+          <svg class="w-4 h-4 text-white/70 hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/5 mt-20 py-10">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+        <p>&copy; {new Date().getFullYear()} Rayvanes Arrasyid. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/rayy1123" target="_blank" rel="noopener noreferrer" class="hover:text-white/70 transition-colors">GitHub</a>
+          <span class="text-xs">Built with Astro + Tailwind</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll spy untuk nav pills
+      const navPills = document.querySelectorAll('.nav-pill');
+      const sections = document.querySelectorAll('section[id]');
+
+      if (navPills.length && sections.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navPills.forEach(pill => {
+                const href = pill.getAttribute('href');
+                const isActive = href === '#' + id;
+                pill.classList.toggle('text-white', isActive);
+                pill.classList.toggle('font-semibold', isActive);
+                pill.classList.toggle('text-white/60', !isActive);
+                pill.classList.toggle('bg-white/5', isActive);
+                pill.classList.toggle('hover:bg-white/5', !isActive);
+              });
+            }
+          });
+        }, { rootMargin: '-40% 0px -50% 0px' });
+        sections.forEach(s => observer.observe(s));
+      }
+
+      // Smooth scroll untuk anchor
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
